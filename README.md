@@ -59,15 +59,6 @@ Manual inspection by safety officers is time-consuming, intermittent, and prone 
 
 ---
 
-## 📸 Demo & Visual Results
-
-<div align="center">
-  <img src="docs/assets/demo-detection.jpg" alt="PPE Detection Output Example" width="750" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" />
-  <p><i>Figure 1: Example of bounding box detections with class labels and confidence metrics.</i></p>
-</div>
-
----
-
 ## 🏗️ System Architecture
 
 ```mermaid
