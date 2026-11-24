@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPE Detection - Système de Détection EPI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦺</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Header -->
+        <header class="top-header center-header">
+            <div class="header-left">
+                <h1 class="app-title">🛡️ PPE Safety Vision</h1>
+                <p class="app-subtitle">Système intelligent de détection et vérification des Équipements de Protection Individuelle</p>
+                <div style="margin-top: 0.6rem;">
+                    <span class="badge">Computer Vision</span>
+                    <span class="badge" style="background: #10b981; margin-left: 0.4rem;">YOLOv8</span>
+                    <span class="badge" style="background: #6366f1; margin-left: 0.4rem;">Django REST</span>
+                    <span class="badge" style="background: #059669; margin-left: 0.4rem;">MongoDB</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Upload Component -->
+        <main class="upload-container">
+            <!-- Upload Box -->
+            <div class="upload-box" id="uploadBox">
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/gif" multiple style="display: none;">
+                
+                <div class="upload-content">
+                    <div class="upload-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h2 class="upload-title">Déposez une image ou cliquez pour parcourir</h2>
+                    <p class="upload-subtitle">Formats supportés : JPG, PNG, GIF • Détection automatique : Casque, Gilet, Masque, Gants, etc.</p>
+                    <button type="button" class="upload-button">Sélectionner une image</button>
+                </div>
+
+                <!-- Progress Ring -->
+                <div class="upload-progress" id="uploadProgress">
+                    <svg class="progress-ring" width="60" height="60">
+                        <circle class="progress-bar" stroke="#60a5fa" stroke-width="5" fill="transparent" r="25" cx="30" cy="30" style="stroke-dasharray: 157.08; stroke-dashoffset: 157.08;" />
+                    </svg>
+                    <div class="progress-text">0%</div>
+                    <div class="progress-label">Analyse en cours...</div>
+                </div>
+            </div>
+
+            <!-- Upload Success Screen -->
+            <div class="upload-complete" id="uploadComplete" style="display: none;">
+                <div class="success-icon">&#10003;</div>
+                <h3 class="complete-title">Traitement réussi !</h3>
+                <p class="complete-subtitle">Images analysées avec succès</p>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.8rem;">
+                    <button type="button" id="viewFilesBtn" class="view-files-btn">Afficher les résultats</button>
+                    <button type="button" id="newUploadBtn" class="new-upload-btn">Nouvelle analyse</button>
+                </div>
+            </div>
+
+            <!-- Files Preview -->
+            <section class="files-preview" id="filesPreview">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 class="preview-title">Aperçu des images sélectionnées</h3>
+                    <button type="button" id="addMoreBtn" class="add-more-btn" style="display: none;">+ Ajouter d'autres images</button>
+                </div>
+                <div class="files-list" id="filesList"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/upload.js"></script>
+</body>
+</html>

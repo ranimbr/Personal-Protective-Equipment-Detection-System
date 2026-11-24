@@ -1,0 +1,295 @@
+/* ================= Reset ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    min-height: 100vh;
+    padding: 2rem;
+    color: #f1f5f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ================= Upload Box ================= */
+.upload-box {
+    position: relative;
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 3px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-box.dragover {
+    border-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.12);
+    transform: scale(1.02);
+}
+
+.upload-box.uploading {
+    border-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.08);
+}
+
+.upload-content {
+    transition: all 0.3s ease;
+}
+
+.upload-box.uploading .upload-content {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.upload-box.uploading .upload-progress {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================= Icons & Text ================= */
+.upload-icon {
+    margin-bottom: 1.5rem;
+    color: #60a5fa;
+}
+
+.upload-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 0.5rem;
+}
+
+.upload-subtitle {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+}
+
+/* ================= Buttons ================= */
+.upload-button {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+}
+
+.upload-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+}
+
+.add-more-btn,
+.new-upload-btn,
+.view-files-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+/* Specific Buttons */
+.add-more-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.add-more-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.new-upload-btn {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: #fff;
+    border: none;
+}
+.new-upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+}
+
+.view-files-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #f1f5f9;
+}
+.view-files-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+/* ================= Progress ================= */
+.upload-progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-bar {
+    transition: stroke-dashoffset 0.3s ease;
+    stroke-linecap: round;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    font-size: 1rem;
+    color: #f1f5f9;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+/* ================= Files Preview ================= */
+.files-preview {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.files-preview.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.preview-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+}
+
+.files-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ================= File Item ================= */
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.file-item:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.file-preview {
+    border-radius: 12px;
+    max-width: 120px;
+    object-fit: cover;
+}
+
+/* ================= Success Screen ================= */
+.success-icon {
+    display: inline-block;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.upload-complete {
+    text-align: center;
+}
+
+/* ================= Header ================= */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1rem 1.5rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+}
+
+.app-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.app-subtitle {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-top: 0.3rem;
+}
+
+.badge {
+    background: #3b82f6;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Centered header */
+.center-header {
+    justify-content: center;
+    text-align: center;
+}
+
+.center-header .header-left {
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport d'Analyse EPI - PPE Detection</title>
+    <link rel="stylesheet" href="/static/results1.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <!-- Chart.js pour les graphiques de confiance -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="results-wrap">
+        <!-- Header -->
+        <header class="results-header">
+            <button id="backBtn" class="back-btn">&larr; Nouvelle analyse</button>
+            <div class="header-center">
+                <h1>Rapport de Détection des EPI</h1>
+                <div id="metaInfo" class="meta-info">Conformité sécurité industrielle</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="results-main">
+            <!-- Left: Annotated Image Card -->
+            <div class="image-card">
+                <img id="annotatedImg" src="" alt="Détections annotées" />
+                <div class="image-actions">
+                    <button id="zoomBtn" class="btn">🔍 Plein écran</button>
+                    <a id="downloadBtn" class="btn" href="" download="detection-result.jpg">📥 Télécharger l'image</a>
+                </div>
+            </div>
+
+            <!-- Right: Info Panel -->
+            <aside class="info-panel">
+                <!-- Summary Card -->
+                <div class="card">
+                    <h3>Équipements détectés</h3>
+                    <div id="summaryStats" class="summary-stats"></div>
+                </div>
+
+                <!-- Confidence Chart Card -->
+                <div class="card">
+                    <h3>Score de confiance moyen</h3>
+                    <canvas id="confChart" height="200"></canvas>
+                </div>
+
+                <!-- Table Card -->
+                <div class="card">
+                    <h3>Détails des détections</h3>
+                    <div class="table-wrap">
+                        <table id="detectionsTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Classe</th>
+                                    <th>Confiance</th>
+                                    <th>Boîte (xyxy)</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Zoom Modal -->
+    <div id="zoomModal" class="zoom-modal">
+        <div class="zoom-backdrop"></div>
+        <div class="zoom-content" style="position: relative; max-width: 90vw; max-height: 90vh;">
+            <button id="closeZoom" class="close-zoom">&times;</button>
+            <img id="zoomImg" src="" alt="Zoom résultat" style="max-width: 90vw; max-height: 85vh; border-radius: 12px; object-fit: contain;" />
+        </div>
+    </div>
+
+    <script src="/static/results1.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+# Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+backend/venv/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Databases
+*.sqlite3
+
+# Large Model Weights (YOLO checkpoints)
+*.pt
+*.pth
+*.onnx
+*.engine
+model/*
+!model/.gitkeep
+
+# Datasets (Roboflow, YOLO datasets)
+data/*
+!data/.gitkeep
+
+# Uploaded & Generated Media files
+media/original/*
+media/annotated/*
+!media/.gitkeep
+!media/original/.gitkeep
+!media/annotated/.gitkeep
+
+# Django Static Collection & Logs
+staticfiles/
+*.log
+
+# IDEs & Operating System
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
